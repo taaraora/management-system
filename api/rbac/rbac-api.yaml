@@ -34,8 +34,8 @@ paths:
                content:
                   application/json:
                      schema:
-                        type: array
-                        items:
+                        type: object
+                        additionalProperties:
                            $ref: '#/components/schemas/Role'
             default:
                description: unexpected error
@@ -121,41 +121,35 @@ components:
          type: object
          properties:
             id: 
-               type: string
-               maxLength: 255
+               type: integer
                description: Role id
             name:
                type: string
                maxLength: 255
                description: Role name
             entries:
-               type: array
-               items:
+               type: object
+               additionalProperties:
                   $ref: '#/components/schemas/FeatureEntry'
       FeatureEntry:
          type: object
          properties:
             id:
-               type: string
-               maxLength: 255
+               type: integer
                description: Feature id
             name:
                type: string
                maxLength: 255
                description: Feature name
             endpoints:
-               type: array
-               items:
+               type: object
+               additionalProperties:
                   $ref: '#/components/schemas/Endpoint'
-            isAccessGranted:
-               type: boolean
-               description: Indicates whether a role has access to the feature
       Endpoint:
          type: object
          properties:
             id:
-               type: string
-               maxLength: 255
+               type: integer
                description: Endpoint id
             path:
                type: string
@@ -169,16 +163,15 @@ components:
          type: object
          properties:
             id: 
-               type: string
-               maxLength: 255
+               type: integer
                description: Role template id
             name:
                type: string
                maxLength: 255
                description: Role template name
             entries:
-               type: array
-               items:
+               type: object
+               additionalProperties:
                   $ref: '#/components/schemas/FeatureEntry'
       Error:
          type: object
